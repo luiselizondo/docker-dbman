@@ -1,0 +1,23 @@
+web:
+  image: luis/dbman
+  links:
+   - mongodb:mongodb
+   - redis:redis
+  ports:
+    - "8001:80"
+  volumes:
+   - "/root/.ssh:/root/.ssh"
+   - "/var/log/dbman:/var/log/supervisor"
+   - "/var/files/db.iiiepe.net:/var/files"
+  environment:
+   MONGODB_DATABASE: dbman
+redis:
+  image: dockerfile/redis
+  expose:
+   - "6379"
+mongodb:
+  image: luis/mongodb
+  expose:
+   - "27017"
+  volumes_from:
+   - DBMAN_DBDATA
