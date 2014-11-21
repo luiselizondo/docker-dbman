@@ -26,6 +26,7 @@ RUN git clone https://github.com/luiselizondo/dbman.git /var/www
 RUN cd /var/www ; npm install
 RUN npm install -g bower
 RUN cd /var/www ; bower install --allow-root
+RUN npm install -g dbmancli
 
 # Copy supervisor configuration
 ADD ./config/nginx.conf /etc/nginx/nginx.conf
